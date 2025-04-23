@@ -1,10 +1,31 @@
 import pandas
 
-planilha = pandas.read_excel (io = './trabalho/planilha.xlsx')
+planilha = pandas.read_excel(io = './trabalho/planilha.xlsx')
 
-colunas = ['Operadora', 'Convênio', 'Saldo Devedor', 'Status do Contrato', 'Data Exclusão', 'Marca Óptica', 'Nome Beneficiário', 'CPF Beneficiário', 'Tipo de Beneficiário', 'Status Atual Beneficiário', 
-'ID Fatura', 'Valor da Fatura', 'Data de Emissão']
+colunas = ['Operadora', 'Convênio', 'Saldo Devedor', 'Status do Contrato', 'Data Exclusão', 
+'Marca Óptica', 'Nome Beneficiário', 'CPF Beneficiário', 'Tipo de Beneficiário', 'Status Atual Beneficiário',]
 
-abas = 
 
-print(planilha[colunas].head(5))
+planilha = planilha[colunas]
+
+planilha['Marca Óptica Odonto'] = None
+planilha['Emitir Boletos'] = None
+planilha['Observação'] = None
+
+
+print(planilha.head(5))
+
+
+excel = pandas.ExcelWriter(path='./trabalho/resultado.xlsx',)
+planilha.to_excel(excel_writer=excel, sheet_name='BASE', index=False)
+
+positivo = planilha[planilha['Saldo Devedor'] > 0]
+positivo.to_excel(excel_writer=excel, sheet_name='POSITIVO', index=False)
+
+negativo = planilha[planilha['Saldo Devedor'] < 0]
+negativo.to_excel(excel_writer=excel, sheet_name='NEGATIVO', index=False)
+
+#nada = planilha.head(0)
+#nada.to_excel(excel_writer=excel, sheet_name='MOV.DIGITAL', index=False)
+
+excel.close() 
