@@ -15,7 +15,7 @@ try:
     print('FLOAT:', numero_float)
 
     # Calcula o dobro do número e mostra o resultado com 2 casas decimais
-    print(f'O dobro de {numero_str} é {numero_float * 2:.2f}')
+    print(f'O dobro de {numero_str} é {numero_float * 2:.1f}')
 
 # Se der erro na conversão (ex: se o usuário digitar "abc"), entra aqui
 except:
