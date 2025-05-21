@@ -19,7 +19,7 @@ LOCAL_1 = 100
 RADAR_RANGE = 1
 
 # Verifica se o carro está acima da velocidade permitida no radar 1
-vel_carro_pass_radar_1 = velocidade > RADAR_1
+velo_carro_passar_radar_1 = velocidade > RADAR_1
 
 # Verifica se o carro está dentro da área de alcance do radar 1
 carro_passou_radar_1 = local_carro >= (LOCAL_1 - RADAR_RANGE) and \
@@ -28,10 +28,10 @@ carro_passou_radar_1 = local_carro >= (LOCAL_1 - RADAR_RANGE) and \
 
 # Verifica se o carro deve ser multado
 # Isso só acontece se ele passou pelo radar E estava acima da velocidade
-carro_multado_radar_1 = carro_passou_radar_1 and vel_carro_pass_radar_1
+carro_multado_radar_1 = carro_passou_radar_1 and velo_carro_passar_radar_1
 
 # Mensagem: o carro estava acima da velocidade do radar
-if vel_carro_pass_radar_1:
+if velo_carro_passar_radar_1:
     print('Velocidade carro passou do radar 1')
 
 # Mensagem: o carro passou dentro do alcance do radar
